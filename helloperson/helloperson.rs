@@ -1,11 +1,6 @@
 fn main() {
-    use std::io::{self, Read};
     let mut buffer = String::new();
-    let result = io::stdin().read_to_string(&mut buffer);
-
-    if !result.is_ok() {
-        return ();
-    }
+    read_input(&mut buffer);
 
     let printer = Printer{};
     printer.print_output(buffer.as_str());
@@ -18,4 +13,10 @@ impl Printer{
         println!("Hello, {}!", name);
         println!("You are a Rustacean");
     }
+}
+
+fn read_input(mut buffer: &mut String){
+    use std::io::{self, Read};
+    let result = io::stdin().read_to_string(&mut buffer);
+    result.unwrap();
 }
