@@ -1,9 +1,8 @@
-fn main() {
-    let mut buffer = String::new();
-    read_input(&mut buffer);
+fn() {
+    let result = read_input();
 
     let printer = Printer{};
-    printer.print_output(buffer.as_str());
+    printer.print_output(result.as_str());
 }
 
 struct Printer{}
@@ -15,8 +14,10 @@ impl Printer{
     }
 }
 
-fn read_input(mut buffer: &mut String){
+fn read_input() -> String{
+    let mut buffer = String::new();
     use std::io::{self, Read};
     let result = io::stdin().read_to_string(&mut buffer);
     result.unwrap();
+    return buffer;
 }
